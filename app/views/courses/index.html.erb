@@ -1,0 +1,25 @@
+<button> <%= link_to 'Add new course', new_course_path %> </button>
+hr
+<button> <%= link_to 'longe courses', long_courses_courses_path  %> </button>
+<h1>List of Courses</h1>
+ <%= image_tag("own.jpg", alt:"image not found" ,height: 250, width: 250) %>
+<table>
+  <tr>
+    <th>Course Name</th>
+    <th>duration</th>
+    <th>subjects</th>
+  </tr>
+ 
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.course_name %></td>
+      <td><%= course.duration %></td>
+      <td><%= course.subjects %></td>
+      <td><button> <%= link_to 'Show', course_path(course) %> </button> </td> 
+      <td><button> <%= link_to 'Edit', edit_course_path(course) %> </button> </td> 
+      <td><button> <%= link_to 'delete', course_path(course),method: :delete,
+      data: { confirm: 'Are you sure?' } %> </button> </td> 
+    
+    </tr>
+  <% end %>
+</table>

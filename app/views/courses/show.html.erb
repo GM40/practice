@@ -1,0 +1,29 @@
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
+
+<p>
+<strong>Course Name:</strong>
+<%= @course.course_name %>
+</p>
+
+<p>
+<strong>Duration:</strong>
+<%= @course.duration %>
+</p>
+
+<p>
+<strong>Subjects:</strong>
+<%= @course.subjects %>
+</p>
+<hr/>
+<h2>Students</h2>
+<%= render "/students/student" %>
+
+<button> <%= link_to 'Add new student ', new_course_student_path(@course.id) %> </button>
+<hr/>
+<button> <%= link_to 'Back', courses_path %> </button>
+<button> <%= link_to 'Edit', edit_course_path(@course) %> </button>
