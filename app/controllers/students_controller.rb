@@ -11,12 +11,34 @@ class StudentsController < ApplicationController
 
   def create
     @course = Course.find(params[:course_id])
-    @student = @course.students.create!(student_params)
+    @student = @course.students.create(student_params)
     redirect_to course_path(@course)
   end
 
   def show
+    @course = Course.find(params[:course_id])
+    @student = @course.students.find(params[:id])
   end
+  def edit 
+    @course = Course.find(params[:course_id])
+    @student = @course.students.find(params[:id])
+  end
+  def update
+    @course = Course.find(params[:course_id])
+    @student = @course.students.find(params[:id])
+    if @student.update(student_params)
+      redirect_to course_student
+    end
+
+  end
+  def destroy
+    byebug
+    @course = Course.find(params[:course_id])
+    @student = @course.students.find(params[:id])
+    @student.destroy
+    redirect_to course_path(@course)
+  end
+
 
   private
   def student_params

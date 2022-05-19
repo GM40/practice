@@ -1,2 +1,47 @@
-<h1>Students#show</h1>
-<p>Find me in app/views/students/show.html.erb</p>
+<h1>Students</h1>
+
+<p>
+<strong>Student ID:</strong>
+<%= @student.id %>
+</p>
+<p>
+<strong>student Name:</strong>
+<%= @student.student_name %>
+</p>
+
+<p>
+<strong>City:</strong>
+<%= @student.city %>
+</p>
+
+<p>
+<strong>Age:</strong>
+<%= @student.age %>
+</p>
+<hr/>
+<h2> Comments </h2>
+
+<% @student.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <%= comment.commenter %>
+    </p>
+  
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+    <button> <%= link_to 'del comment', student_comment_path(@student, comment) ,method: :delete,
+    data: { confirm: 'Are you sure?' } %> </button> 
+<% end %>
+
+<%= render "/comments/form" %>
+
+<hr/>
+<button> <%= link_to 'Edit student ', edit_course_student_path(@course ,@student) %> </button> 
+<button> <%= link_to 'delete student', course_student_path(@course, @student),method: :delete,
+data: { confirm: 'Are you sure?' } %> </button> 
+
+
+
+

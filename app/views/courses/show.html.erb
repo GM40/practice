@@ -6,6 +6,10 @@
 <% end %>
 
 <p>
+<strong>Course ID:</strong>
+<%= @course.id %>
+</p>
+<p>
 <strong>Course Name:</strong>
 <%= @course.course_name %>
 </p>
@@ -21,7 +25,22 @@
 </p>
 <hr/>
 <h2>Students</h2>
-<%= render "/students/student" %>
+
+<table>
+  <tr>
+
+    <th>Student Name</th>
+  </tr>
+ 
+  <% @course.students.each do |student| %>
+    <tr>
+      <td><%= student.student_name %></td>
+      <td><button> <%= link_to 'more details ....', course_student_path(@course ,student) %> </button> </td> 
+    </tr>
+  <% end %>
+</table>
+
+
 
 <button> <%= link_to 'Add new student ', new_course_student_path(@course.id) %> </button>
 <hr/>

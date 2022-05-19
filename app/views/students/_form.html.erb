@@ -1,11 +1,11 @@
 
-<%= form_with(model: [ @course, @course.students.build ], local: true) do |form| %>
+<%= form_with(model: [ @course, @student ], local: true) do |form| %>
     <p>
       <%= form.label :student_name %><br>
       <%= form.text_field :student_name %>
     </p>
     <p>
-      <%= form.label :city %><br>
+      <%= form.label :city %><br> 
       <%= form.text_field :city %>
     </p>
 

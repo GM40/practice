@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
  
 
+
   resources :courses do
-    resources :students
     get "long_courses", on: :collection 
+    resources :students
   end
+
+  resources :students do 
+    resources :comments
+  end
+
   root 'courses#index'
   
 

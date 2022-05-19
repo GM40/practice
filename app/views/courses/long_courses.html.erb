@@ -1,0 +1,19 @@
+<% @courses.each do |course| %>
+    <p>
+    <strong>Course Name:</strong>
+    <%= course.course_name %>
+    </p>
+
+    <p>
+    <strong>Duration:</strong>
+    <%= course.duration %>
+    </p>
+
+    <p>
+    <strong>Subjects:</strong>
+    <%= course.subjects %>
+    </p>
+<% end %>
+
+<button> <%= link_to 'Back', courses_path %> </button>
+

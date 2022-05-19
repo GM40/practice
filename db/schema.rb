@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_13_094918) do
+ActiveRecord::Schema.define(version: 2022_05_18_111041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commenter"
+    t.text "body"
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_comments_on_student_id"
+  end
 
   create_table "courses", force: :cascade do |t|
     t.string "course_name"
@@ -24,7 +33,7 @@ ActiveRecord::Schema.define(version: 2022_05_13_094918) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.integer "course_id"
+    t.integer "course_id", null: false
     t.string "student_name"
     t.string "city"
     t.integer "age"
@@ -32,4 +41,5 @@ ActiveRecord::Schema.define(version: 2022_05_13_094918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "comments", "students"
 end

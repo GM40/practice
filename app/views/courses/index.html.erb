@@ -5,6 +5,7 @@ hr
  <%= image_tag("own.jpg", alt:"image not found" ,height: 250, width: 250) %>
 <table>
   <tr>
+    <th>Course ID</th>
     <th>Course Name</th>
     <th>duration</th>
     <th>subjects</th>
@@ -12,6 +13,7 @@ hr
  
   <% @courses.each do |course| %>
     <tr>
+      <td><%= course.id %></td>
       <td><%= course.course_name %></td>
       <td><%= course.duration %></td>
       <td><%= course.subjects %></td>

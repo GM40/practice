@@ -1,15 +1,21 @@
 <table>
   <tr>
+    <th>course id</th>
     <th>Student Name</th>
     <th>City</th>
-    <th>Age</th>
+    <th>Age</th>  
   </tr>
  
   <% @course.students.each do |student| %>
     <tr>
+      <td><%= student.course_id %></td>
       <td><%= student.student_name %></td>
       <td><%= student.city %></td>
       <td><%= student.age %></td>
+      <td><button> <%= link_to 'Edit', edit_course_student_path(student) %> </button> </td> 
+      <td><button> <%= link_to 'delete', course_student_path(@course, student),method: :delete,
+      data: { confirm: 'Are you sure?' } %> </button> </td>
+      
      
     </tr>
   <% end %>

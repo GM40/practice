@@ -39,9 +39,12 @@ class CoursesController < ApplicationController
 
 
     def long_courses
-        @courses = Course.where("duration > 10")
-        byebug
+        @courses = Course.where("duration > 10")  
     end
+
+
+
+    
     private 
     def course_params
         params.require(:course).permit(:course_name, :duration, :subjects)
