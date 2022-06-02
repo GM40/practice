@@ -17,10 +17,7 @@ class Course < ApplicationRecord
       self.course_name = course_name.titleize
     end
 
-    def general_commit
-      flash[:alert] = "creating  new course ."
-        
-        
+    def general_commit    
     end
  
 end

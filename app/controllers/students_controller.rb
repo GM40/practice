@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
   def index
+    @course = Course.find(params[:course_id])
+    @student = @course.students.all
+
 
   end
 
@@ -18,6 +21,10 @@ class StudentsController < ApplicationController
   def show
     @course = Course.find(params[:course_id])
     @student = @course.students.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   def edit 
     @course = Course.find(params[:course_id])
@@ -27,7 +34,7 @@ class StudentsController < ApplicationController
     @course = Course.find(params[:course_id])
     @student = @course.students.find(params[:id])
     if @student.update(student_params)
-      redirect_to course_student
+      redirect_to course_student_path
     end
 
   end

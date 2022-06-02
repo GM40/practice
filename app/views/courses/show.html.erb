@@ -23,6 +23,10 @@
 <strong>Subjects:</strong>
 <%= @course.subjects %>
 </p>
+<p>
+<strong>created time</strong>
+<%= @course.created_at %>
+</p>
 <hr/>
 <h2>Students</h2>
 
@@ -35,7 +39,7 @@
   <% @course.students.each do |student| %>
     <tr>
       <td><%= student.student_name %></td>
-      <td><button> <%= link_to 'more details ....', course_student_path(@course ,student) %> </button> </td> 
+      <td><button> <%= link_to 'more details ....', course_student_path(@course , student.id)  %> </button></td> 
     </tr>
   <% end %>
 </table>

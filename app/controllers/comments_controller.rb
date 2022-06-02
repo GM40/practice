@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # byebug
     @student = Student.find(params[:student_id])
     @comment = @student.comments.find(params[:id])
     @comment.destroy
